@@ -77,16 +77,16 @@ class RootCommand(Feature):
         ]
 
         if distributions:
-            dist_version = f'{distributions[0]} `{package_version(distributions[0])}`'
+            dist_version = f'<a:right_abrutal:930507586145488976>{distributions[0]} Version is `{package_version(distributions[0])}`'
         else:
             dist_version = f'unknown `{discord.__version__}`'
 
         summary = [
-            f"**Jishaku v{package_version('jishaku')}, {dist_version}\n\n"
-            f"Python `{sys.version}`  on  `{sys.platform}`\n\n"
-            f"Module was loaded <t:{self.load_time.timestamp():.0f}:R>.\n\n"
-            f"Cog was loaded <t:{self.start_time.timestamp():.0f}:R>.**\n\n",
-            ""
+            f"<a:right_abrutal:930507586145488976>**Jishaku v{package_version('jishaku')} \n {dist_version}\n\n"
+            f"<a:right_abrutal:930507586145488976>Python `{sys.version}`  on  `{sys.platform}`\n\n"
+            f"<a:right_abrutal:930507586145488976>Module was loaded <t:{self.load_time.timestamp():.0f}:R>.\n\n"
+            f"<a:right_abrutal:930507586145488976>Cog was loaded <t:{self.start_time.timestamp():.0f}:R>.**\n\n",
+            "" 
         ]
 
         # detect if [procinfo] feature is installed
@@ -120,7 +120,7 @@ class RootCommand(Feature):
                 )
                 summary.append("")  # blank line
 
-        cache_summary = f"`{len(self.bot.guilds)}` Guilds and `{len(self.bot.users)}` Users.\n"
+        cache_summary = f"<a:right_abrutal:930507586145488976> **Bot Total Guilds `{len(self.bot.guilds)}`Guilds. \n<a:right_abrutal:930507586145488976> Bot Total Users `{len(self.bot.users)}`Users.**"
 
         # Show shard settings to summary
         if isinstance(self.bot, discord.AutoShardedClient):
@@ -141,19 +141,19 @@ class RootCommand(Feature):
                 f" and can see {cache_summary}.\n"
             )
         else:
-            summary.append(f"This bot is not sharded and can see {cache_summary}.\n")
+            summary.append(f"<a:right_abrutal:930507586145488976> **This bot is not sharded and can see** \n{cache_summary}")
 
         # pylint: disable=protected-access
         if self.bot._connection.max_messages:
-            message_cache = f"Message cache capped at {self.bot._connection.max_messages}"
+            message_cache = f"<a:right_abrutal:930507586145488976>**Message cache capped at** `{self.bot._connection.max_messages}`"
         else:
-            message_cache = "Message cache is disabled"
+            message_cache = "<a:right_abrutal:930507586145488976>**Message cache is disabled**"
 
         if discord.version_info >= (1, 5, 0):
-            presence_intent = f"presence intent is {'enabled' if self.bot.intents.presences else 'disabled'}\n"
-            members_intent = f"members intent is {'enabled' if self.bot.intents.members else 'disabled'}\n"
+            presence_intent = f"<a:right_abrutal:930507586145488976>**Presence intent is** {'`enabled`' if self.bot.intents.presences else '`disabled`'}"
+            members_intent = f"<a:right_abrutal:930507586145488976>**Pembers intent is** {'`enabled`' if self.bot.intents.members else '`disabled`'}"
 
-            summary.append(f"{message_cache}, {presence_intent} and {members_intent}.")
+            summary.append(f"{message_cache} \n {presence_intent} \n {members_intent}")
         else:
             guild_subscriptions = f"guild subscriptions are {'enabled' if self.bot._connection.guild_subscriptions else 'disabled'}\n"
 
@@ -161,7 +161,7 @@ class RootCommand(Feature):
 
         # pylint: enable=protected-access
 
-        em = discord.Embed(title="Jishaku", description="\n".join(summary), color=0x2f3136)
+        em = discord.Embed(title="Jishaku By Harsh !!", description="\n".join(summary), color=0x2f3136)
         em.set_thumbnail(url=self.bot.user.avatar.url)
         em.set_footer(text=f"Average websocket latency: {round(self.bot.latency * 100, 2)}ms", icon_url=self.bot.user.avatar.url)
         await ctx.reply(embed=em, mention_author=False)
