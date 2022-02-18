@@ -77,15 +77,15 @@ class RootCommand(Feature):
         ]
 
         if distributions:
-            dist_version = f'<a:right_abrutal:930507586145488976>{distributions[0]} Version is `{package_version(distributions[0])}`'
+            dist_version = f'<a:right_abrutal:930507586145488976>{distributions[0]} Version is `v{package_version(distributions[0])}`'
         else:
             dist_version = f'unknown `{discord.__version__}`'
 
         summary = [
-            f"<a:right_abrutal:930507586145488976>**Jishaku v{package_version('jishaku')} \n {dist_version}\n\n"
-            f"<a:right_abrutal:930507586145488976>Python `{sys.version}`  on  `{sys.platform}`\n\n"
-            f"<a:right_abrutal:930507586145488976>Module was loaded <t:{self.load_time.timestamp():.0f}:R>.\n\n"
-            f"<a:right_abrutal:930507586145488976>Cog was loaded <t:{self.start_time.timestamp():.0f}:R>.**\n\n",
+            f"<a:right_abrutal:930507586145488976>Python Version is `v{sys.version}` <:python:928561050339667978>\n"
+            f"<a:right_abrutal:930507586145488976>**Jishaku Version is `v{package_version('jishaku')}` <:id_em:928569034847428618> \n {dist_version} <a:emoji_Discord:942656688949977148>\n\n"
+            f"<a:right_abrutal:930507586145488976>Module was loaded <t:{self.load_time.timestamp():.0f}:R>. <a:dia:928560211847962626>\n"
+            f"<a:right_abrutal:930507586145488976>Cog was loaded <t:{self.start_time.timestamp():.0f}:R>.** <a:dia:928560211847962626>\n",
             "" 
         ]
 
@@ -97,9 +97,9 @@ class RootCommand(Feature):
                 with proc.oneshot():
                     try:
                         mem = proc.memory_full_info()
-                        summary.append(f"Using {natural_size(mem.rss)} physical memory and \n"
-                                       f"{natural_size(mem.vms)} virtual memory, \n"
-                                       f"{natural_size(mem.uss)} of which unique to this process.\n")
+                        summary.append(f"Using {natural_size(mem.rss)} physical memory and "
+                                       f"{natural_size(mem.vms)} virtual memory, "
+                                       f"{natural_size(mem.uss)} of which unique to this process.")
                     except psutil.AccessDenied:
                         pass
 
@@ -108,7 +108,7 @@ class RootCommand(Feature):
                         pid = proc.pid
                         thread_count = proc.num_threads()
 
-                        summary.append(f"Running on PID {pid} (`{name}`) with {thread_count} thread(s).\n")
+                        summary.append(f"Running on PID {pid} (`{name}`) with {thread_count} thread(s).")
                     except psutil.AccessDenied:
                         pass
 
@@ -120,7 +120,7 @@ class RootCommand(Feature):
                 )
                 summary.append("")  # blank line
 
-        cache_summary = f"<a:right_abrutal:930507586145488976> **Bot Total Guilds `{len(self.bot.guilds)}`Guilds. \n<a:right_abrutal:930507586145488976> Bot Total Users `{len(self.bot.users)}`Users.**"
+        cache_summary = f"<a:right_abrutal:930507586145488976> **Bot Total Guilds `{len(self.bot.guilds)}`guilds. <a:partner:928740251038535771> \n<a:right_abrutal:930507586145488976> Bot Total Users `{len(self.bot.users)}`users. <:members:928563309786050561>\n<a:right_abrutal:930507586145488976> Bot Total roles `{len(self.bot.roles)}`roles. <a:roles_:928563417667731458>\n<a:right_abrutal:930507586145488976> Bot Total Channel `{len(self.bot.channels)}`channels. <:text:928563359287234560>**"
 
         # Show shard settings to summary
         if isinstance(self.bot, discord.AutoShardedClient):
@@ -141,7 +141,7 @@ class RootCommand(Feature):
                 f" and can see {cache_summary}.\n"
             )
         else:
-            summary.append(f"<a:right_abrutal:930507586145488976> **This bot is not sharded and can see** \n{cache_summary}")
+            summary.append(f"<a:right_abrutal:930507586145488976> **This bot is not sharded and can see** <a:emoji_Cross:943494534111830036> \n{cache_summary}")
 
         # pylint: disable=protected-access
         if self.bot._connection.max_messages:
@@ -150,8 +150,8 @@ class RootCommand(Feature):
             message_cache = "<a:right_abrutal:930507586145488976>**Message cache is disabled**"
 
         if discord.version_info >= (1, 5, 0):
-            presence_intent = f"<a:right_abrutal:930507586145488976>**Presence intent is** {'`enabled`' if self.bot.intents.presences else '`disabled`'}"
-            members_intent = f"<a:right_abrutal:930507586145488976>**Pembers intent is** {'`enabled`' if self.bot.intents.members else '`disabled`'}"
+            presence_intent = f"<a:right_abrutal:930507586145488976>**Presence intent is** {'`Enabled` <a:emoji_tick:943497995045994546> ' if self.bot.intents.presences else '`Disabled` <a:emoji_Cross:943494534111830036>'}"
+            members_intent = f"<a:right_abrutal:930507586145488976>**Pembers intent is** {'`Enabled` <a:emoji_tick:943497995045994546> ' if self.bot.intents.members else '`Disabled` <a:emoji_Cross:943494534111830036>'}"
 
             summary.append(f"{message_cache} \n {presence_intent} \n {members_intent}")
         else:
