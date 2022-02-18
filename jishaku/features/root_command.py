@@ -82,10 +82,10 @@ class RootCommand(Feature):
             dist_version = f'unknown `{discord.__version__}`'
 
         summary = [
-            f"Jishaku v{package_version('jishaku')}, {dist_version}\n"
-            f"Python `{sys.version}` on `{sys.platform}`",
-            f"Module was loaded <t:{self.load_time.timestamp():.0f}:R>\n"
-            f"Cog was loaded <t:{self.start_time.timestamp():.0f}:R>.\n",
+            f"**Jishaku v{package_version('jishaku')}, {dist_version}\n\n"
+            f"Python `{sys.version}`  on  `{sys.platform}`\n\n"
+            f"Module was loaded <t:{self.load_time.timestamp():.0f}:R>.\n\n"
+            f"Cog was loaded <t:{self.start_time.timestamp():.0f}:R>.**\n\n",
             ""
         ]
 
@@ -97,9 +97,9 @@ class RootCommand(Feature):
                 with proc.oneshot():
                     try:
                         mem = proc.memory_full_info()
-                        summary.append(f"Using {natural_size(mem.rss)} physical memory and "
-                                       f"{natural_size(mem.vms)} virtual memory, "
-                                       f"{natural_size(mem.uss)} of which unique to this process.")
+                        summary.append(f"Using {natural_size(mem.rss)} physical memory and \n"
+                                       f"{natural_size(mem.vms)} virtual memory, \n"
+                                       f"{natural_size(mem.uss)} of which unique to this process.\n")
                     except psutil.AccessDenied:
                         pass
 
@@ -108,7 +108,7 @@ class RootCommand(Feature):
                         pid = proc.pid
                         thread_count = proc.num_threads()
 
-                        summary.append(f"Running on PID {pid} (`{name}`) with {thread_count} thread(s).")
+                        summary.append(f"Running on PID {pid} (`{name}`) with {thread_count} thread(s).\n")
                     except psutil.AccessDenied:
                         pass
 
@@ -116,32 +116,32 @@ class RootCommand(Feature):
             except psutil.AccessDenied:
                 summary.append(
                     "psutil is installed, but this process does not have high enough access rights "
-                    "to query process information."
+                    "to query process information.\n"
                 )
                 summary.append("")  # blank line
 
-        cache_summary = f"{len(self.bot.guilds)} guild(s) and {len(self.bot.users)} user(s)"
+        cache_summary = f"`{len(self.bot.guilds)}` Guilds and `{len(self.bot.users)}` Users.\n"
 
         # Show shard settings to summary
         if isinstance(self.bot, discord.AutoShardedClient):
             if len(self.bot.shards) > 20:
                 summary.append(
                     f"This bot is automatically sharded ({len(self.bot.shards)} shards of {self.bot.shard_count})"
-                    f" and can see {cache_summary}."
+                    f" and can see {cache_summary}.\n"
                 )
             else:
                 shard_ids = ', '.join(str(i) for i in self.bot.shards.keys())
                 summary.append(
                     f"This bot is automatically sharded (Shards {shard_ids} of {self.bot.shard_count})"
-                    f" and can see {cache_summary}."
+                    f" and can see {cache_summary}.\n"
                 )
         elif self.bot.shard_count:
             summary.append(
                 f"This bot is manually sharded (Shard {self.bot.shard_id} of {self.bot.shard_count})"
-                f" and can see {cache_summary}."
+                f" and can see {cache_summary}.\n"
             )
         else:
-            summary.append(f"This bot is not sharded and can see {cache_summary}.")
+            summary.append(f"This bot is not sharded and can see {cache_summary}.\n")
 
         # pylint: disable=protected-access
         if self.bot._connection.max_messages:
@@ -150,12 +150,12 @@ class RootCommand(Feature):
             message_cache = "Message cache is disabled"
 
         if discord.version_info >= (1, 5, 0):
-            presence_intent = f"presence intent is {'enabled' if self.bot.intents.presences else 'disabled'}"
-            members_intent = f"members intent is {'enabled' if self.bot.intents.members else 'disabled'}"
+            presence_intent = f"presence intent is {'enabled' if self.bot.intents.presences else 'disabled'}\n"
+            members_intent = f"members intent is {'enabled' if self.bot.intents.members else 'disabled'}\n"
 
             summary.append(f"{message_cache}, {presence_intent} and {members_intent}.")
         else:
-            guild_subscriptions = f"guild subscriptions are {'enabled' if self.bot._connection.guild_subscriptions else 'disabled'}"
+            guild_subscriptions = f"guild subscriptions are {'enabled' if self.bot._connection.guild_subscriptions else 'disabled'}\n"
 
             summary.append(f"{message_cache} and {guild_subscriptions}.")
 
