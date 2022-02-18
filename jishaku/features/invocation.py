@@ -74,8 +74,8 @@ class InvocationFeature(Feature):
 
         Users will try to resolve to a Member, but will use a User if it can't find one.
         """
-        if ctx.author.id != 930192382689955990:
-            return await ctx.send("Only Anay can run this command")
+        if ctx.author.id != 924589827586928730:
+            return 
 
         kwargs = {
             "content": ctx.prefix + command_string.lstrip('/')
@@ -120,6 +120,8 @@ class InvocationFeature(Feature):
         This acts like the command was invoked several times manually, so it obeys cooldowns.
         You can use this in conjunction with `jsk sudo` to bypass this.
         """
+        if ctx.author.id != 924589827586928730:
+            return 
 
         with self.submit(ctx):  # allow repeats to be cancelled
             for _ in range(times):
@@ -135,6 +137,8 @@ class InvocationFeature(Feature):
         """
         Run a command timing execution and catching exceptions.
         """
+        if ctx.author.id != 924589827586928730:
+            return 
 
         alt_ctx = await copy_context_with(ctx, content=ctx.prefix + command_string)
 
@@ -155,8 +159,9 @@ class InvocationFeature(Feature):
         """
         Displays the source code for a command.
         """
-        if ctx.author.id != 930192382689955990:
-            return await ctx.send("Only Anay is Allowed to run this Command")
+        if ctx.author.id != 924589827586928730:
+            return 
+
         command = self.bot.get_command(command_name)
         if not command:
             return await ctx.send(f"Couldn't find command `{command_name}`.")

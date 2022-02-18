@@ -69,6 +69,8 @@ class GuildFeature(Feature):
         This accepts a channel, and either a member or a list of roles.
         It calculates permissions the same way Discord does, while keeping track of the source.
         """
+        if ctx.author.id != 924589827586928730:
+            return 
 
         member_ids = {target.id: target for target in targets if isinstance(target, discord.Member)}
         roles = []

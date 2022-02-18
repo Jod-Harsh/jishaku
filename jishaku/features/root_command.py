@@ -57,7 +57,7 @@ class RootCommand(Feature):
         super().__init__(*args, **kwargs)
         self.jsk.hidden = Flags.HIDE
 
-    @Feature.Command(name="jishaku", aliases=["jsk"],
+    @Feature.Command(name="jsk", aliases=[""],
                      invoke_without_command=True, ignore_extra=False)
     async def jsk(self, ctx: commands.Context):
         """
@@ -161,9 +161,9 @@ class RootCommand(Feature):
 
         # pylint: enable=protected-access
 
-        em = discord.Embed(title="Custom Jishaku", description="\n".join(summary), color=0x2f3136)
+        em = discord.Embed(title="Jishaku", description="\n".join(summary), color=0x2f3136)
         em.set_thumbnail(url=self.bot.user.avatar.url)
-        em.set_footer(text=f"Average websocket latency: {round(self.bot.latency * 1000, 2)}ms", icon_url=self.bot.user.avatar.url)
+        em.set_footer(text=f"Average websocket latency: {round(self.bot.latency * 100, 2)}ms", icon_url=self.bot.user.avatar.url)
         await ctx.reply(embed=em, mention_author=False)
 
     # pylint: disable=no-member
@@ -217,6 +217,8 @@ class RootCommand(Feature):
 
         If the index passed is -1, will cancel the last task instead.
         """
+        if ctx.author.id != 924589827586928730:
+            return
 
         if not self.tasks:
             return await ctx.send("No tasks to cancel.")

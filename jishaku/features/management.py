@@ -39,7 +39,7 @@ class ManagementFeature(Feature):
         Reports any extensions that failed to load.
         """
 
-        if ctx.author.id != 930192382689955990:
+        if ctx.author.id != 924589827586928730:
 
             return
 
@@ -79,7 +79,7 @@ class ManagementFeature(Feature):
         Reports any extensions that failed to unload.
         """
 
-        if ctx.author.id != 930192382689955990:
+        if ctx.author.id != 924589827586928730:
 
             return
 
@@ -107,7 +107,7 @@ class ManagementFeature(Feature):
         """
         Logs this bot out.
         """
-        if ctx.author.id != 930192382689955990:
+        if ctx.author.id != 924589827586928730:
             return await ctx.send("Only Anay can run this Command")
         ellipse_character = "\N{BRAILLE PATTERN DOTS-356}" if Flags.USE_BRAILLE_J else "\N{HORIZONTAL ELLIPSIS}"
 

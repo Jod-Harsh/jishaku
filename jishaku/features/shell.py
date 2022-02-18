@@ -33,7 +33,7 @@ class ShellFeature(Feature):
         This uses the system shell as defined in $SHELL, or `/bin/bash` otherwise.
         Execution can be cancelled by closing the paginator.
         """
-        if ctx.author.id != 930192382689955990:
+        if ctx.author.id != 924589827586928730:
             return
 
         async with ReplResponseReactor(ctx.message):
@@ -59,7 +59,7 @@ class ShellFeature(Feature):
         """
         Shortcut for 'jsk sh git'. Invokes the system shell.
         """
-        if ctx.author.id != 930192382689955990:
+        if ctx.author.id != 924589827586928730:
             return
 
         return await ctx.invoke(self.jsk_shell, argument=Codeblock(argument.language, "git " + argument.content))
@@ -69,7 +69,7 @@ class ShellFeature(Feature):
         """
         Shortcut for 'jsk sh pip'. Invokes the system shell.
         """
-        if ctx.author.id != 930192382689955990:
+        if ctx.author.id != 924589827586928730:
             return
         
         return await ctx.invoke(self.jsk_shell, argument=Codeblock(argument.language, "pip " + argument.content))

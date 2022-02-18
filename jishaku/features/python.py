@@ -57,8 +57,8 @@ class PythonFeature(Feature):
 
         Provide no argument for current status.
         """
-        if ctx.author.id != 930192382689955990:
-            return await ctx.send("Only Anay")
+        if ctx.author.id != 924589827586928730:
+            return
 
         if toggle is None:
             if self.retain:
@@ -138,8 +138,8 @@ class PythonFeature(Feature):
         """
         Direct evaluation of Python code.
         """
-        if ctx.author.id != 930192382689955990:
-            return await ctx.send("Only Anay")
+        if ctx.author.id != 924589827586928730:
+            return 
 
         arg_dict = get_var_dict_from_ctx(ctx, Flags.SCOPE_PREFIX)
         arg_dict["_"] = self.last_result
@@ -166,8 +166,8 @@ class PythonFeature(Feature):
         """
         Evaluation of Python code with inspect information.
         """
-        if ctx.author.id != 930192382689955990:
-            return await ctx.send("Only Anay")
+        if ctx.author.id != 924589827586928730:
+            return 
 
         arg_dict = get_var_dict_from_ctx(ctx, Flags.SCOPE_PREFIX)
         arg_dict["_"] = self.last_result
@@ -218,8 +218,8 @@ class PythonFeature(Feature):
         """
         Disassemble Python code into bytecode.
         """
-        if ctx.author.id != 930192382689955990:
-            return await ctx.send("Only Anay")
+        if ctx.author.id != 924589827586928730:
+            return 
 
         arg_dict = get_var_dict_from_ctx(ctx, Flags.SCOPE_PREFIX)
 
