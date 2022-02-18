@@ -120,7 +120,7 @@ class RootCommand(Feature):
                 )
                 summary.append("")  # blank line
 
-        cache_summary = f"<a:right_abrutal:930507586145488976> **Bot Total Guilds `{len(self.bot.guilds)}`guilds. <a:partner:928740251038535771> \n<a:right_abrutal:930507586145488976> Bot Total Users `{len(self.bot.users)}`users. <:members:928563309786050561>\n<a:right_abrutal:930507586145488976> Bot Total roles `{len(self.bot.roles)}`roles. <a:roles_:928563417667731458>\n<a:right_abrutal:930507586145488976> Bot Total Channel `{len(self.bot.channels)}`channels. <:text:928563359287234560>**"
+        cache_summary = f"<a:right_abrutal:930507586145488976> **Bot Total Guilds `{len(self.bot.guilds)}`guilds. <a:partner:928740251038535771> \n<a:right_abrutal:930507586145488976> Bot Total Users `{len(self.bot.users)}`users. <:members:928563309786050561>\n<a:right_abrutal:930507586145488976> Bot Total Channel `{len(self.bot.channels)}`channels. <:text:928563359287234560>**"
 
         # Show shard settings to summary
         if isinstance(self.bot, discord.AutoShardedClient):
