@@ -1,0 +1,8 @@
+click
+coverage
+flake8
+isort
+pylint
+pytest
+pytest-cov
+pytest-mock
