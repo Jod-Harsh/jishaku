@@ -141,7 +141,7 @@ class RootCommand(Feature):
                 f" and can see {cache_summary}.\n"
             )
         else:
-            summary.append(f"<a:right_abrutal:930507586145488976> **This bot is not sharded and can see** <a:emoji_Cross:943494534111830036> \n{cache_summary}")
+            summary.append(f"<a:right_abrutal:930507586145488976> **This bot is not sharded** <a:emoji_Cross:943494534111830036> \n{cache_summary}")
 
         # pylint: disable=protected-access
         if self.bot._connection.max_messages:
