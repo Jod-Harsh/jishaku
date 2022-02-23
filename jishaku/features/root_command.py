@@ -21,7 +21,7 @@ from discord.ext import commands
 from jishaku.features.baseclass import Feature
 from jishaku.flags import Flags
 from jishaku.modules import package_version
-from jishaku.paginators import PaginatorInterface
+from jishaku.paginators import PaginatorInterface, harsh
 
 try:
     import psutil
@@ -57,7 +57,7 @@ class RootCommand(Feature):
         super().__init__(*args, **kwargs)
         self.jsk.hidden = Flags.HIDE
 
-    @Feature.Command(name="jishaku", aliases=["jsk"],
+    @Feature.Command(name="jishaku", aliases=["jsk","eval","Jsk","JSK","Eval","EVAL"],
                      invoke_without_command=True, ignore_extra=False)
     async def jsk(self, ctx: commands.Context):
         """
@@ -164,7 +164,7 @@ class RootCommand(Feature):
         em = discord.Embed(title="Jishaku By Harsh !!", description="\n".join(summary), color=0x2f3136)
         em.set_thumbnail(url=self.bot.user.avatar.url)
         em.set_footer(text=f"Average websocket latency: {round(self.bot.latency * 100, 2)}ms", icon_url=self.bot.user.avatar.url)
-        await ctx.reply(embed=em, mention_author=False)
+        await ctx.reply(embed=em, mention_author=False, view=harsh())
 
     # pylint: disable=no-member
     @Feature.Command(parent="jsk", name="hide")

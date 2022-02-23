@@ -157,3 +157,10 @@ def use_file_check(ctx: commands.Context, size: int) -> bool:
         not Flags.FORCE_PAGINATOR,  # Check the user hasn't explicitly disabled this;
         (not ctx.author.is_on_mobile() if ctx.guild and ctx.bot.intents.presences else True)  # Ensure the user isn't on mobile
     ])
+
+
+class harsh(discord.ui.View):
+    def __init__(self):
+        super().__init__()
+        url = f'https://discord.com/users/924589827586928730'
+        self.add_item(discord.ui.Button(label='For Custom Bot Dm HarsH', url=url))
