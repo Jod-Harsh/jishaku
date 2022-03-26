@@ -87,9 +87,6 @@ class PythonFeature(Feature):
         What you return is what gets stored in the temporary _ variable.
         """
 
-        if isinstance(result, discord.Message):
-            return await ctx.send(f"<Message <{result.jump_url}>>")
-
         if isinstance(result, discord.File):
             return await ctx.send(file=result)
 

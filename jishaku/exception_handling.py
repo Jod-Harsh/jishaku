@@ -105,20 +105,20 @@ class ReactionProcedureTimer:  # pylint: disable=too-few-public-methods
 
         # no exception, check mark
         if not exc_val:
-            await attempt_add_reaction(self.message, "\N{WHITE HEAVY CHECK MARK}")
+            await attempt_add_reaction(self.message, "<a:emoji_tick:943497995045994546>")
             return
 
         self.raised = True
 
         if isinstance(exc_val, (asyncio.TimeoutError, subprocess.TimeoutExpired)):
             # timed out, alarm clock
-            await attempt_add_reaction(self.message, "\N{ALARM CLOCK}")
+            await attempt_add_reaction(self.message, "<a:emoji_Cross:943494534111830036>")
         elif isinstance(exc_val, SyntaxError):
             # syntax error, single exclamation mark
-            await attempt_add_reaction(self.message, "\N{HEAVY EXCLAMATION MARK SYMBOL}")
+            await attempt_add_reaction(self.message, "<:dnd:928630720270835762>")
         else:
             # other error, double exclamation mark
-            await attempt_add_reaction(self.message, "\N{DOUBLE EXCLAMATION MARK}")
+            await attempt_add_reaction(self.message, "<a:emoji__lol:943589885481201669>")
 
 
 class ReplResponseReactor(ReactionProcedureTimer):  # pylint: disable=too-few-public-methods
