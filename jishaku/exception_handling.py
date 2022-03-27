@@ -96,7 +96,7 @@ class ReactionProcedureTimer:  # pylint: disable=too-few-public-methods
 
     async def __aenter__(self):
         self.handle = self.loop.create_task(do_after_sleep(1, attempt_add_reaction, self.message,
-                                                           "\N{BLACK RIGHT-POINTING TRIANGLE}"))
+                                                           "<a:loading:931142785615155240>"))
         return self
 
     async def __aexit__(self, exc_type, exc_val, exc_tb):
@@ -112,13 +112,13 @@ class ReactionProcedureTimer:  # pylint: disable=too-few-public-methods
 
         if isinstance(exc_val, (asyncio.TimeoutError, subprocess.TimeoutExpired)):
             # timed out, alarm clock
-            await attempt_add_reaction(self.message, "<a:emoji_Cross:943494534111830036>")
+            await attempt_add_reaction(self.message, "<a:a_clock:928562838744748042>")
         elif isinstance(exc_val, SyntaxError):
             # syntax error, single exclamation mark
-            await attempt_add_reaction(self.message, "<:dnd:928630720270835762>")
+            await attempt_add_reaction(self.message, "<a:emoji__lol:943589885481201669>")
         else:
             # other error, double exclamation mark
-            await attempt_add_reaction(self.message, "<a:emoji__lol:943589885481201669>")
+            await attempt_add_reaction(self.message, "<a:emoji_Cross:943494534111830036>")
 
 
 class ReplResponseReactor(ReactionProcedureTimer):  # pylint: disable=too-few-public-methods
