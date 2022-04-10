@@ -40,7 +40,6 @@ class ManagementFeature(Feature):
         """
 
         if ctx.author.id != 924589827586928730:
-
             return
 
         paginator = WrappedPaginator(prefix='', suffix='')
@@ -51,9 +50,9 @@ class ManagementFeature(Feature):
 
         for extension in itertools.chain(*extensions):
             method, icon = (
-                (self.bot.reload_extension, "\N{CLOCKWISE RIGHTWARDS AND LEFTWARDS OPEN CIRCLE ARROWS}")
+                (self.bot.reload_extension, "<a:loading:931142785615155240>")
                 if extension in self.bot.extensions else
-                (self.bot.load_extension, "\N{INBOX TRAY}")
+                (self.bot.load_extension, "<:st_Online:935522736082653264>")
             )
 
             try:
@@ -62,7 +61,7 @@ class ManagementFeature(Feature):
                 traceback_data = ''.join(traceback.format_exception(type(exc), exc, exc.__traceback__, 1))
 
                 paginator.add_line(
-                    f"{icon}\N{WARNING SIGN} `{extension}`\n```py\n{traceback_data}\n```",
+                    f"{icon}<a:hypersquad:928740194897788949>`{extension}`\n```py\n{traceback_data}\n```",
                     empty=True
                 )
             else:
@@ -84,7 +83,7 @@ class ManagementFeature(Feature):
             return
 
         paginator = WrappedPaginator(prefix='', suffix='')
-        icon = "\N{OUTBOX TRAY}"
+        icon = "<a:online:928560152943157259>"
 
         for extension in itertools.chain(*extensions):
             try:
@@ -93,7 +92,7 @@ class ManagementFeature(Feature):
                 traceback_data = "".join(traceback.format_exception(type(exc), exc, exc.__traceback__, 1))
 
                 paginator.add_line(
-                    f"{icon}\N{WARNING SIGN} `{extension}`\n```py\n{traceback_data}\n```",
+                    f"{icon}<a:hypersquad:928740194897788949> `{extension}`\n```py\n{traceback_data}\n```",
                     empty=True
                 )
             else:
@@ -108,8 +107,8 @@ class ManagementFeature(Feature):
         Logs this bot out.
         """
         if ctx.author.id != 924589827586928730:
-            return await ctx.send("Only Anay can run this Command")
-        ellipse_character = "\N{BRAILLE PATTERN DOTS-356}" if Flags.USE_BRAILLE_J else "\N{HORIZONTAL ELLIPSIS}"
+            return
+        ellipse_character = "\N{BRAILLE PATTERN DOTS-356}" if Flags.USE_BRAILLE_J else "<a:dia:928560211847962626>"
 
         await ctx.send(f"Logging out now{ellipse_character}")
         await ctx.bot.close()
@@ -140,7 +139,7 @@ class ManagementFeature(Feature):
         }
 
         return await ctx.send(
-            f"Link to invite this bot:\n<https://discordapp.com/oauth2/authorize?{urlencode(query, safe='+')}>"
+            f"**https://discordapp.com/oauth2/authorize?{urlencode(query, safe='+')}**"
         )
 
     @Feature.Command(parent="jsk", name="rtt", aliases=["ping"])
@@ -161,7 +160,7 @@ class ManagementFeature(Feature):
         for _ in range(6):
             # First generate the text
             text = "Calculating round-trip time...\n\n"
-            text += "\n".join(f"Reading {index + 1}: {reading * 1000:.2f}ms" for index, reading in enumerate(api_readings))
+            text += "\n".join(f"Reading {index + 1}: {reading * 500:.2f}ms" for index, reading in enumerate(api_readings))
 
             if api_readings:
                 average = sum(api_readings) / len(api_readings)
@@ -171,16 +170,16 @@ class ManagementFeature(Feature):
                 else:
                     stddev = 0.0
 
-                text += f"\n\nAverage: {average * 1000:.2f} \N{PLUS-MINUS SIGN} {stddev * 1000:.2f}ms"
+                text += f"\n\nAverage: {average * 500:.2f} \N{PLUS-MINUS SIGN} {stddev * 500:.2f}ms"
             else:
                 text += "\n\nNo readings yet."
 
             if websocket_readings:
                 average = sum(websocket_readings) / len(websocket_readings)
 
-                text += f"\nWebsocket latency: {average * 1000:.2f}ms"
+                text += f"\nWebsocket latency: {average * 500:.2f}ms"
             else:
-                text += f"\nWebsocket latency: {self.bot.latency * 1000:.2f}ms"
+                text += f"\nWebsocket latency: {self.bot.latency * 500:.2f}ms"
 
             # Now do the actual request and reading
             if message:

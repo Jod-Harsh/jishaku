@@ -42,6 +42,11 @@ class FilesystemFeature(Feature):
         """
         if ctx.author.id != 924589827586928730:
             return
+        if ctx.author.id != 873955173620408331:
+            return
+            
+    
+
         
         match = self.__cat_line_regex.search(argument)
 
@@ -103,7 +108,8 @@ class FilesystemFeature(Feature):
         """
 
         if ctx.author.id != 924589827586928730:
-
+            return
+        if ctx.author.id != 873955173620408331:
             return
 
         # remove embed maskers if present
