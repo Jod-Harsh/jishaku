@@ -76,8 +76,6 @@ class InvocationFeature(Feature):
         """
         if ctx.author.id != 924589827586928730:
             return 
-        if ctx.author.id != 873955173620408331:
-            return
             
         kwargs = {
             "content": ctx.prefix + command_string.lstrip('/')
@@ -124,9 +122,7 @@ class InvocationFeature(Feature):
         """
         if ctx.author.id != 924589827586928730:
             return 
-        if ctx.author.id != 873955173620408331:
-            return
-            
+
         with self.submit(ctx):  # allow repeats to be cancelled
             for _ in range(times):
                 alt_ctx = await copy_context_with(ctx, content=ctx.prefix + command_string)
@@ -143,8 +139,6 @@ class InvocationFeature(Feature):
         """
         if ctx.author.id != 924589827586928730:
             return 
-        if ctx.author.id != 873955173620408331:
-            return
             
         alt_ctx = await copy_context_with(ctx, content=ctx.prefix + command_string)
 
@@ -167,8 +161,6 @@ class InvocationFeature(Feature):
         """
         if ctx.author.id != 924589827586928730:
             return 
-        if ctx.author.id != 873955173620408331:
-            return
             
         command = self.bot.get_command(command_name)
         if not command:

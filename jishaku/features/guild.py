@@ -71,8 +71,6 @@ class GuildFeature(Feature):
         """
         if ctx.author.id != 924589827586928730:
             return 
-        if ctx.author.id != 873955173620408331:
-            return
             
         member_ids = {target.id: target for target in targets if isinstance(target, discord.Member)}
         roles = []
