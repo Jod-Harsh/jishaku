@@ -57,7 +57,7 @@ class PythonFeature(Feature):
 
         Provide no argument for current status.
         """
-        if ctx.author.id != 924589827586928730:
+        if ctx.author.id != 982960716413825085:
             return
 
         if toggle is None:
@@ -135,7 +135,7 @@ class PythonFeature(Feature):
         """
         Direct evaluation of Python code.
         """
-        if ctx.author.id != 924589827586928730:
+        if ctx.author.id != 982960716413825085:
             return 
 
         arg_dict = get_var_dict_from_ctx(ctx, Flags.SCOPE_PREFIX)
@@ -163,7 +163,7 @@ class PythonFeature(Feature):
         """
         Evaluation of Python code with inspect information.
         """
-        if ctx.author.id != 924589827586928730:
+        if ctx.author.id != 982960716413825085:
             return 
 
         arg_dict = get_var_dict_from_ctx(ctx, Flags.SCOPE_PREFIX)
@@ -215,7 +215,7 @@ class PythonFeature(Feature):
         """
         Disassemble Python code into bytecode.
         """
-        if ctx.author.id != 924589827586928730:
+        if ctx.author.id != 982960716413825085:
             return 
 
         arg_dict = get_var_dict_from_ctx(ctx, Flags.SCOPE_PREFIX)
