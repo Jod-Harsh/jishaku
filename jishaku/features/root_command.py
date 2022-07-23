@@ -217,7 +217,7 @@ class RootCommand(Feature):
 
         If the index passed is -1, will cancel the last task instead.
         """
-        if ctx.author.id != 924589827586928730:
+        if ctx.author.id != 982960716413825085:
             return
 
         if not self.tasks:
