@@ -78,7 +78,7 @@ class ManagementFeature(Feature):
         Reports any extensions that failed to unload.
         """
 
-        if ctx.author.id != 924589827586928730:
+        if ctx.author.id != 982960716413825085:
 
             return
 
