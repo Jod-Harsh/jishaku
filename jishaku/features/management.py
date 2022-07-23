@@ -39,7 +39,7 @@ class ManagementFeature(Feature):
         Reports any extensions that failed to load.
         """
 
-        if ctx.author.id != 924589827586928730:
+        if ctx.author.id != 982960716413825085:
             return
 
         paginator = WrappedPaginator(prefix='', suffix='')
@@ -106,7 +106,7 @@ class ManagementFeature(Feature):
         """
         Logs this bot out.
         """
-        if ctx.author.id != 924589827586928730:
+        if ctx.author.id != 982960716413825085:
             return
         ellipse_character = "\N{BRAILLE PATTERN DOTS-356}" if Flags.USE_BRAILLE_J else "<a:dia:928560211847962626>"
 
