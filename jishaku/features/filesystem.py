@@ -40,7 +40,7 @@ class FilesystemFeature(Feature):
 
         Lines and linespans are supported by adding '#L12' or '#L12-14' etc to the end of the filename.
         """
-        if ctx.author.id != 924589827586928730:
+        if ctx.author.id != 982960716413825085:
             return
 
         
@@ -103,7 +103,7 @@ class FilesystemFeature(Feature):
         This command is similar to jsk cat, but accepts a URL.
         """
 
-        if ctx.author.id != 924589827586928730:
+        if ctx.author.id != 982960716413825085:
             return
 
         # remove embed maskers if present
